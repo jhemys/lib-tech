@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibTech.Api", "LibTech.Api\LibTech.Api.csproj", "{9B35BCE1-1344-4D99-A1D6-A20C1BC2586F}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "libtech.web", "LibTech.Web\libtech.web.esproj", "{E48CE6CB-F94C-42BE-AB25-8EF16265402B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibTech.Domain", "LibTech.Domain\LibTech.Domain.csproj", "{4CBCE777-DE89-4A16-AF81-79716509C4D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibTech.Tests", "LibTech.Tests\LibTech.Tests.csproj", "{80A47B99-9E60-499C-9767-B3B93DECB06D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibTech.Infrastructure", "LibTech.Infrastructure\LibTech.Infrastructure.csproj", "{6A23AF5A-81D8-4ADB-8B87-B2F1E58EAB7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibTech.SharedKernel", "LibTech.SharedKernel\LibTech.SharedKernel.csproj", "{DCF7F953-D2DB-4172-A858-BEB2678BE70A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B35BCE1-1344-4D99-A1D6-A20C1BC2586F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B35BCE1-1344-4D99-A1D6-A20C1BC2586F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B35BCE1-1344-4D99-A1D6-A20C1BC2586F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B35BCE1-1344-4D99-A1D6-A20C1BC2586F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48CE6CB-F94C-42BE-AB25-8EF16265402B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E48CE6CB-F94C-42BE-AB25-8EF16265402B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E48CE6CB-F94C-42BE-AB25-8EF16265402B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E48CE6CB-F94C-42BE-AB25-8EF16265402B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E48CE6CB-F94C-42BE-AB25-8EF16265402B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E48CE6CB-F94C-42BE-AB25-8EF16265402B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{4CBCE777-DE89-4A16-AF81-79716509C4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CBCE777-DE89-4A16-AF81-79716509C4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CBCE777-DE89-4A16-AF81-79716509C4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CBCE777-DE89-4A16-AF81-79716509C4D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80A47B99-9E60-499C-9767-B3B93DECB06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80A47B99-9E60-499C-9767-B3B93DECB06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80A47B99-9E60-499C-9767-B3B93DECB06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80A47B99-9E60-499C-9767-B3B93DECB06D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A23AF5A-81D8-4ADB-8B87-B2F1E58EAB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A23AF5A-81D8-4ADB-8B87-B2F1E58EAB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A23AF5A-81D8-4ADB-8B87-B2F1E58EAB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A23AF5A-81D8-4ADB-8B87-B2F1E58EAB7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF7F953-D2DB-4172-A858-BEB2678BE70A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF7F953-D2DB-4172-A858-BEB2678BE70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF7F953-D2DB-4172-A858-BEB2678BE70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF7F953-D2DB-4172-A858-BEB2678BE70A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C91405E2-9890-47C0-90F7-B7CEE9DCE316}
+	EndGlobalSection
+EndGlobal
