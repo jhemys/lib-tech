@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace LibTech.Api
+namespace LibTech.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -15,7 +15,7 @@ namespace LibTech.Api
         {
             _vendingMachine = new VendingMachine();
         }
-        
+
         // GET: api/<SnackMachineController>
         [HttpGet]
         public IEnumerable<string> Get()
