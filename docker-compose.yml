@@ -2,22 +2,28 @@ version: '3.4'
 
 services:
   libtech.api:
+    container_name: libtech-api
     image: ${DOCKER_REGISTRY-}libtech-api
     build:
-      context: .
-      dockerfile: LibTech.Api/Dockerfile
+      context: LibTech.Api
+      dockerfile: Dockerfile
 
   libtech.web:
+    container_name: libtech-web
     image: ${DOCKER_REGISTRY-}libtech-web
+    command: "npm start"
     build:
       context: LibTech.Web
       dockerfile: docker/Dockerfile
     depends_on:
-        - libtech.api
+      - libtech.api
+    links:
+      - libtech.api
     stdin_open: true
     tty: true
 
   proxy:
+    container_name: proxy
     image: 'nginx'
     volumes:
       - './default.conf:/etc/nginx/conf.d/default.conf'

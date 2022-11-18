@@ -15,5 +15,5 @@ services:
   libtech.web:
     ports:
       - "3000:3000"
-    links:
-      - libtech.api
+    volumes:
+      - ./LibTech.Web:/usr/src/app
