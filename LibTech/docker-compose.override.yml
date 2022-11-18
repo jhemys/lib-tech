@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  libtech.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+    ports:
+      - "5148:80"
+      - "7148:443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  libtech.web:
+    ports:
+      - "3000:3000"
+    links:
+      - libtech.api

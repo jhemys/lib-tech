@@ -15,6 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibTech.Infrastructure", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibTech.SharedKernel", "LibTech.SharedKernel\LibTech.SharedKernel.csproj", "{DCF7F953-D2DB-4172-A858-BEB2678BE70A}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{A3E4D912-8ED0-4E5F-8E96-0560C4D74E6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC94CC87-F4AC-422A-AA61-F3BAF34A6AB6}"
+	ProjectSection(SolutionItems) = preProject
+		default.conf = default.conf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +54,10 @@ Global
 		{DCF7F953-D2DB-4172-A858-BEB2678BE70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCF7F953-D2DB-4172-A858-BEB2678BE70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCF7F953-D2DB-4172-A858-BEB2678BE70A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3E4D912-8ED0-4E5F-8E96-0560C4D74E6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3E4D912-8ED0-4E5F-8E96-0560C4D74E6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3E4D912-8ED0-4E5F-8E96-0560C4D74E6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3E4D912-8ED0-4E5F-8E96-0560C4D74E6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

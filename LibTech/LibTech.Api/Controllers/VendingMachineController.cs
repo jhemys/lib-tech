@@ -36,7 +36,7 @@ namespace LibTech.Api.Controllers
         {
         }
 
-        [Route("api/[controller]/AddMoney")]
+        [Route("[action]")]
         [HttpPost]
         public void AddMoney()
         {

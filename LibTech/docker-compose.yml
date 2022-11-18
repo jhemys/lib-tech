@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  libtech.api:
+    image: ${DOCKER_REGISTRY-}libtech-api
+    build:
+      context: .
+      dockerfile: LibTech.Api/Dockerfile
+
+  libtech.web:
+    image: ${DOCKER_REGISTRY-}libtech-web
+    build:
+      context: LibTech.Web
+      dockerfile: docker/Dockerfile
+    depends_on:
+        - libtech.api
+    stdin_open: true
+    tty: true
+
+  proxy:
+    image: 'nginx'
+    volumes:
+      - './default.conf:/etc/nginx/conf.d/default.conf'
+    ports:
+      - '12345:80'
+
+networks:
+  default:
+    driver: bridge
