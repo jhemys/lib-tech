@@ -11,9 +11,21 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+    networks:
+      - backend
 
   libtech.web:
+    environment:
+      - API_URL=https://libtech-api:7148
+      - CHOKIDAR_USEPOLLING=true
+      - FAST_REFRESH=false
+      - WATCHPACK_POLLING=true
     ports:
       - "3000:3000"
     volumes:
-      - ./LibTech.Web:/usr/src/app
+      - ./LibTech.Web/src:/app/src
+    networks:
+      - backend
+
+networks:
+  backend: {}

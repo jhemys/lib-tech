@@ -44,7 +44,7 @@ export default class App extends Component {
 
         return (
             <div>
-                <h1 id="tabelLabel" >Diabo forecast</h1>
+                <h1 id="tabelLabel" >Weather forecast</h1>
                 <p>This component demonstrates fetching data from the server.</p>
                 {contents}
             </div>
@@ -52,7 +52,13 @@ export default class App extends Component {
     }
 
     async populateWeatherData() {
+        console.log(process.env)
         const response = await fetch('VendingMachine');
+        const response1 = await fetch(`${process.env.API_URL}/VendingMachine`);
+        const response2 = await fetch('http://libtech-api:5148/VendingMachine');
+        const response3 = await fetch('http://localhost:5148/VendingMachine');
+        const response4 = await fetch('https://libtech-api:7148/VendingMachine');
+        const response5 = await fetch('https://localhost:7148/VendingMachine');
         const data = await response.json();
         this.setState({ forecasts: data, loading: false });
     }
