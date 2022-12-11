@@ -7,6 +7,8 @@ services:
     build:
       context: LibTech.Api
       dockerfile: Dockerfile
+    links:
+      - sqlserver
 
   libtech.web:
     container_name: libtech-web
@@ -19,3 +21,14 @@ services:
       - libtech.api
     links:
       - libtech.api
+  
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      SA_PASSWORD: "SqlServer2019!"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    volumes:
+      - ./LibTech.LibTech.Infrastructure/sql/data:/var/opt/mssql/data
+    ports:
+      - "1433:1433"

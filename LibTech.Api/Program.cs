@@ -1,3 +1,5 @@
+using LibTech.Infrastructure.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +19,8 @@ builder.Services.AddSwaggerGen();
 //                }));
 
 builder.Services.AddCors(c => { c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()); });
+
+builder.Services.AddDatabaseConnectionString();
 
 var app = builder.Build();
 

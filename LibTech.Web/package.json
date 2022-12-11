@@ -39,7 +39,11 @@
     "react-scripts": "5.0.1",
     "eslint-config-react-app": "^7.0.1",
     "jest-editor-support": "^30.1.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "@svgr/webpack": "^6.5.1"
+  },
+  "overrides": {
+    "@svgr/webpack": "$@svgr/webpack"
   },
   "proxy": "https://libtech-api:7148",
   "homepage": "."
