@@ -29,6 +29,6 @@ services:
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Developer"
     volumes:
-      - ./LibTech.LibTech.Infrastructure/sql/data:/var/opt/mssql/data
+      - ./LibTech.Infrastructure/sql/data:/var/opt/mssql/data
     ports:
       - "1433:1433"
