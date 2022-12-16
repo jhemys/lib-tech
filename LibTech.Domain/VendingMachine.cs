@@ -1,7 +1,13 @@
-﻿namespace LibTech.Domain
+﻿using LibTech.Domain.SeedWork;
+
+namespace LibTech.Domain
 {
     public class VendingMachine : Entity
     {
+        //public VendingMachine(LibTech.Infrastructure.Data.LibTechContext context)
+        //{
+
+        //}
         public Money MoneyInside { get; set; } = Money.None;
         public Money MoneyInTransaction { get; set; } = Money.None;
 

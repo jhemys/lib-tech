@@ -1,4 +1,4 @@
-﻿namespace LibTech.Domain
+﻿namespace LibTech.Domain.SeedWork
 {
     public abstract class Entity
     {
