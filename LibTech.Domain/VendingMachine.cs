@@ -4,20 +4,27 @@ namespace LibTech.Domain
 {
     public class VendingMachine : Entity
     {
-        //public VendingMachine(LibTech.Infrastructure.Data.LibTechContext context)
-        //{
+        private readonly IVendingMachineRepository _repository;
+        public VendingMachine(IVendingMachineRepository repository)
+        {
+            _repository = repository;
+        }
 
-        //}
+        private VendingMachine() { }
+
         public Money MoneyInside { get; set; } = Money.None;
         public Money MoneyInTransaction { get; set; } = Money.None;
 
-        public void InsertMoney(Money money)
+        public async Task InsertMoney(Money money)
         {
             Money[] coins = new Money[] { Money.Cent, Money.TenCent, Money.QuarterCent, Money.OneDollar, Money.FiveDollar, Money.TwentyDollar };
             if (!coins.Contains(money))
                 throw new InvalidOperationException();
 
             MoneyInTransaction += money;
+            MoneyInside += money;
+
+            await _repository.AddAsync(this);
         }
 
         public void ReturnMoney()

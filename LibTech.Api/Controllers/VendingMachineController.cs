@@ -11,9 +11,9 @@ namespace LibTech.Api.Controllers
     {
         public readonly VendingMachine _vendingMachine;
 
-        public VendingMachineController()
+        public VendingMachineController(IVendingMachineRepository repository)
         {
-            _vendingMachine = new VendingMachine();
+            _vendingMachine = new VendingMachine(repository);
         }
 
         // GET: api/<SnackMachineController>
@@ -38,9 +38,9 @@ namespace LibTech.Api.Controllers
 
         [Route("[action]")]
         [HttpPost]
-        public void AddMoney()
+        public async Task AddMoney()
         {
-            _vendingMachine.InsertMoney(Money.Cent);
+            await _vendingMachine.InsertMoney(Money.Cent);
         }
 
         // PUT api/<SnackMachineController>/5

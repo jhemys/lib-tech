@@ -1,6 +1,6 @@
 ﻿namespace LibTech.Domain.SeedWork
 {
-    public abstract class Entity
+    public abstract class Entity : IEntity
     {
         public long Id { get; private set; }
 

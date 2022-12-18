@@ -1,3 +1,5 @@
+using LibTech.Domain;
+using LibTech.Infrastructure.Repositories;
 using LibTech.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCors(c => { c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()); });
 
 builder.Services.AddDatabaseConnectionString();
+builder.Services.AddTransient<IVendingMachineRepository, VendingMachineRepository>();
 
 var app = builder.Build();
 
