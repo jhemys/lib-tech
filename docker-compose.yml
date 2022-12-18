@@ -5,8 +5,7 @@ services:
     container_name: libtech-api
     image: ${DOCKER_REGISTRY-}libtech-api
     build:
-      context: LibTech.Api
-      dockerfile: Dockerfile
+      dockerfile: LibTech.Api/Dockerfile
     links:
       - sqlserver
 
