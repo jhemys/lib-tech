@@ -1,4 +1,6 @@
-﻿namespace LibTech.Domain.SeedWork
+﻿using LibTech.SharedKernel.Interfaces;
+
+namespace LibTech.SharedKernel
 {
     public abstract class Entity : IEntity
     {

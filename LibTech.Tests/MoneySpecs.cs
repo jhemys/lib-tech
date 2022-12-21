@@ -41,5 +41,11 @@ namespace LibTech.Tests
             money1.Should().NotBe(money2);
             money1.GetHashCode().Should().NotBe(money2.GetHashCode());
         }
+
+        [Fact]
+        public void Allocate_should_work_as_expected()
+        {
+            //TODO: Create test scenarios
+        }
     }
 }

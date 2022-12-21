@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LibTech.Domain.SeedWork
+namespace LibTech.SharedKernel
 {
     public abstract class Identity : IEquatable<Identity>
     {
@@ -40,7 +40,7 @@ namespace LibTech.Domain.SeedWork
         {
             unchecked
             {
-                return (Id * 397) ^ Identifier.GetHashCode();
+                return Id * 397 ^ Identifier.GetHashCode();
             }
         }
 

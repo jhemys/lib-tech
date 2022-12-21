@@ -1,4 +1,4 @@
-﻿namespace LibTech.Domain.SeedWork
+﻿namespace LibTech.SharedKernel.Interfaces
 {
     public interface IAggregateRoot
     {

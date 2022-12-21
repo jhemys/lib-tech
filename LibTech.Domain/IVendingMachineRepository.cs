@@ -1,4 +1,4 @@
-﻿using LibTech.Domain.SeedWork;
+﻿using LibTech.SharedKernel.Interfaces;
 
 namespace LibTech.Domain
 {

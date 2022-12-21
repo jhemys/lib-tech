@@ -6,12 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="SeedWork\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\LibTech.SharedKernel\LibTech.SharedKernel.csproj" />
-  </ItemGroup>
-
 </Project>

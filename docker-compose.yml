@@ -31,3 +31,6 @@ services:
       - ./LibTech.Infrastructure/sql/data:/var/opt/mssql/data
     ports:
       - "1433:1433"
+
+  rabbitmq:
+    image: rabbitmq:3.11.5-management-alpine

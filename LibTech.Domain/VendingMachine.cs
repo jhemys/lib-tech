@@ -1,27 +1,36 @@
-﻿using LibTech.Domain.SeedWork;
+﻿using LibTech.SharedKernel;
 
 namespace LibTech.Domain
 {
-    public class VendingMachine : Entity
+    public class VendingMachine : AggregateRoot
     {
         private readonly IVendingMachineRepository _repository;
-        public VendingMachine(IVendingMachineRepository repository)
+        public VendingMachine(IVendingMachineRepository repository) : this()
         {
             _repository = repository;
+            MoneyInside = Money.None;
+            MoneyInTransaction = 0m;
+            Slots = new List<Slot>()
+            {
+                new Slot(this, 1),
+                new Slot(this, 2),
+                new Slot(this, 3),
+            };
         }
 
         private VendingMachine() { }
 
-        public Money MoneyInside { get; set; } = Money.None;
-        public Money MoneyInTransaction { get; set; } = Money.None;
+        public Money MoneyInside { get; set; }
+        public decimal MoneyInTransaction { get; set; }
+        protected IList<Slot> Slots { get; set; }
 
         public async Task InsertMoney(Money money)
         {
             Money[] coins = new Money[] { Money.Cent, Money.TenCent, Money.QuarterCent, Money.OneDollar, Money.FiveDollar, Money.TwentyDollar };
             if (!coins.Contains(money))
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Invalid currency inserted.");
 
-            MoneyInTransaction += money;
+            MoneyInTransaction += money.Amount;
             MoneyInside += money;
 
             await _repository.AddAsync(this);
@@ -29,13 +38,60 @@ namespace LibTech.Domain
 
         public void ReturnMoney()
         {
-            MoneyInTransaction = Money.None;
+            Money moneyToReturn = MoneyInside.Allocate(MoneyInTransaction);
+            MoneyInside -= moneyToReturn;
+            MoneyInTransaction = 0m;
         }
 
-        public void BuyBook()
+        public void BuyBook(int position)
         {
-            MoneyInside += MoneyInTransaction;
-            MoneyInTransaction = Money.None;
+            var slot = GetSlot(position);
+
+            if (slot.BookPile.Price > MoneyInTransaction)
+            {
+                Money moneyToReturn = MoneyInside.Allocate(MoneyInTransaction);
+                MoneyInTransaction = moneyToReturn.Amount;
+                MoneyInside -= moneyToReturn;
+
+                throw new InvalidOperationException("Book price is higher than amount inserted.");
+            }
+
+            Money change = MoneyInside.Allocate(MoneyInTransaction - slot.BookPile.Price);
+
+            if (change.Amount < (MoneyInTransaction - slot.BookPile.Price))
+            {
+                Money moneyToReturn = MoneyInside.Allocate(MoneyInTransaction);
+                MoneyInTransaction = moneyToReturn.Amount;
+                MoneyInside -= moneyToReturn;
+
+                throw new InvalidOperationException("No change available for this purchase value inserted.");
+            }
+
+            slot.BookPile = slot.BookPile.Subtract(1);
+
+            MoneyInside -= change;
+            MoneyInTransaction = 0m;
+        }
+
+        public void LoadBooks(int position, BookPile bookPile)
+        {
+            Slot slot = GetSlot(position);
+            slot.BookPile = bookPile;
+        }
+
+        private Slot GetSlot(int position)
+        {
+            return Slots.Single(x => x.Position == position);
+        }
+
+        public BookPile GetBookPile(int position)
+        {
+            return GetSlot(position).BookPile;
+        }
+
+        public void LoadMoney(Money money)
+        {
+            MoneyInside += money;
         }
     }
 }

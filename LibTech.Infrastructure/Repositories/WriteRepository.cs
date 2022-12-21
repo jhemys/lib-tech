@@ -1,5 +1,7 @@
 ﻿using LibTech.Domain.SeedWork;
 using LibTech.Infrastructure.Data;
+using LibTech.SharedKernel;
+using LibTech.SharedKernel.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace LibTech.Infrastructure.Repositories

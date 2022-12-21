@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using LibTech.Domain.SeedWork;
 
-namespace LibTech.Domain.SeedWork
+namespace LibTech.SharedKernel.Interfaces
 {
     public interface IReadRepository<TEntity> where TEntity : Entity
     {
