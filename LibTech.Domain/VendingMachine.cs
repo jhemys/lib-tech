@@ -24,6 +24,22 @@ namespace LibTech.Domain
             MoneyInside += money;
         }
 
+        public string CanBuyBook(int position)
+        {
+            var bookPile = GetBookPile(position);
+
+            if (bookPile.Quantity == 0)
+                return "The book pile is empty.";
+
+            if (MoneyInTransaction < bookPile.Price)
+                return "Not enough money.";
+
+            if (!MoneyInside.CanAllocate(MoneyInTransaction - bookPile.Price))
+                return "not enough change";
+
+            return string.Empty;
+        }
+
         public void ReturnMoney()
         {
             Money moneyToReturn = MoneyInside.Allocate(MoneyInTransaction);

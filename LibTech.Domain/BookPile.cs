@@ -2,6 +2,7 @@
 {
     public sealed class BookPile : ValueObject<BookPile>
     {
+        public static readonly BookPile Empty = new BookPile(Book.Empty, 0, 0m);
         public Book Book { get; }
         public int Quantity { get; }
         public decimal Price { get; }

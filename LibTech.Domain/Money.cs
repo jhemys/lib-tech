@@ -121,5 +121,11 @@ namespace LibTech.Domain
                 fiveDollarCount,
                 twentyDollarCount);
         }
+
+        public bool CanAllocate(decimal amount)
+        {
+            Money money = Allocate(amount);
+            return money.Amount == amount;
+        }
     }
 }

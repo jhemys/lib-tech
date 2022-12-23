@@ -4,6 +4,7 @@ namespace LibTech.Domain
 {
     public class Book : AggregateRoot
     {
+        public static readonly Book Empty = new Book(null);
         public Book(string title, string author, string iSBN, string publisher, string description, string imageUrl, string url, string category, string subCategory, string language, string format, int pages)
         {
             Title = title;

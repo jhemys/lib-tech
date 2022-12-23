@@ -14,7 +14,7 @@ namespace LibTech.Domain
         {
             VendingMachine = vendingMachine;
             Position = position;
-            BookPile = new BookPile(null, 0, 0m);
+            BookPile = BookPile.Empty;
         }
     }
 }
