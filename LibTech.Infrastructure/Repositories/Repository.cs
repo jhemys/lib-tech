@@ -18,7 +18,7 @@ namespace LibTech.Infrastructure.Repositories
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public async Task<T> GetById(int id)
+        public async Task<T> GetById(long id)
         {
             return await _entity.FirstOrDefaultAsync(x => x.Id == id);
         }

@@ -6,7 +6,7 @@ namespace LibTech.SharedKernel.Interfaces
     {
         IUnitOfWork UnitOfWork { get; }
 
-        Task<TModel> GetById(int id);
+        Task<TModel> GetById(long id);
         Task AddAsync(TModel model);
         void Remove(TModel model);
         void Update(TModel model);

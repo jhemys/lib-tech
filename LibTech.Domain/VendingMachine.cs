@@ -25,9 +25,8 @@ namespace LibTech.Domain
                 throw new InvalidOperationException("Invalid currency inserted.");
 
             MoneyInTransaction += money.Amount;
-            MoneyInside += money;
 
-            await _repository.AddAsync(this);
+            //await _repository.Save(this);
         }
 
         public void ReturnMoney()
@@ -37,7 +36,7 @@ namespace LibTech.Domain
             MoneyInTransaction = 0m;
         }
 
-        public void BuyBook(int position)
+        public async Task BuyBook(int position)
         {
             var slot = GetSlot(position);
 
@@ -65,6 +64,8 @@ namespace LibTech.Domain
 
             MoneyInside -= change;
             MoneyInTransaction = 0m;
+
+            await _repository.Save(this);
         }
 
         public void LoadBooks(int position, BookPile bookPile)

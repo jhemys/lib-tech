@@ -3,6 +3,7 @@ using LibTech.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibTech.Infrastructure.Migrations
 {
     [DbContext(typeof(LibTechContext))]
-    partial class LibTechContextModelSnapshot : ModelSnapshot
+    [Migration("20221223012134_Adding_Constraint_Slot_Position")]
+    partial class AddingConstraintSlotPosition
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

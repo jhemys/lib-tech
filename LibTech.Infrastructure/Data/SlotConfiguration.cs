@@ -30,6 +30,10 @@ namespace LibTech.Infrastructure.Data
                     a.HasOne(p => p.Book).WithMany().HasForeignKey("BookId");
                     a.Navigation(p => p.Book).AutoInclude();
                 });
+
+            builder
+                .HasIndex(p => p.Position)
+                .IsUnique();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using LibTech.Domain;
+using LibTech.Infrastructure.Repositories;
+using LibTech.SharedKernel.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -9,11 +11,13 @@ namespace LibTech.Api.Controllers
     [ApiController]
     public class VendingMachineController : ControllerBase
     {
-        public readonly VendingMachine _vendingMachine;
+        private readonly VendingMachine _vendingMachine;
+        private readonly IVendingMachineRepository _repository;
 
         public VendingMachineController(IVendingMachineRepository repository)
         {
             _vendingMachine = new VendingMachine(repository);
+            _repository = repository;
         }
 
         // GET: api/<SnackMachineController>
@@ -41,6 +45,15 @@ namespace LibTech.Api.Controllers
         public async Task AddMoney()
         {
             await _vendingMachine.InsertMoney(Money.Cent);
+        }
+
+        [Route("[action]/{position}/{value}")]
+        [HttpPost]
+        public async Task BuySnack(int position, int value)
+        {
+            var vendingMachine = await _repository.GetById(1);
+            await vendingMachine.InsertMoney(new Money(0, 0, 0, value, 0, 0));
+            await vendingMachine.BuyBook(position);
         }
 
         // PUT api/<SnackMachineController>/5
