@@ -10,19 +10,13 @@ namespace LibTech.Domain
             _repository = repository;
             MoneyInside = Money.None;
             MoneyInTransaction = 0m;
-            Slots = new List<Slot>()
-            {
-                new Slot(this, 1),
-                new Slot(this, 2),
-                new Slot(this, 3),
-            };
         }
 
         private VendingMachine() { }
 
         public Money MoneyInside { get; set; }
         public decimal MoneyInTransaction { get; set; }
-        protected IList<Slot> Slots { get; set; }
+        public virtual IReadOnlyCollection<Slot> Slots { get; set; }
 
         public async Task InsertMoney(Money money)
         {

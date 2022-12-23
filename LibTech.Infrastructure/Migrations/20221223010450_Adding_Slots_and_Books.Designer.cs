@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibTech.Infrastructure.Migrations
 {
     [DbContext(typeof(LibTechContext))]
-    [Migration("20221223004533_Adding_Slots_and_Books")]
+    [Migration("20221223010450_Adding_Slots_and_Books")]
     partial class AddingSlotsandBooks
     {
         /// <inheritdoc />
@@ -121,7 +121,7 @@ namespace LibTech.Infrastructure.Migrations
             modelBuilder.Entity("LibTech.Domain.Slot", b =>
                 {
                     b.HasOne("LibTech.Domain.VendingMachine", "VendingMachine")
-                        .WithMany()
+                        .WithMany("Slots")
                         .HasForeignKey("VendingMachineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -207,6 +207,11 @@ namespace LibTech.Infrastructure.Migrations
 
                     b.Navigation("MoneyInside")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LibTech.Domain.VendingMachine", b =>
+                {
+                    b.Navigation("Slots");
                 });
 #pragma warning restore 612, 618
         }

@@ -118,7 +118,7 @@ namespace LibTech.Infrastructure.Migrations
             modelBuilder.Entity("LibTech.Domain.Slot", b =>
                 {
                     b.HasOne("LibTech.Domain.VendingMachine", "VendingMachine")
-                        .WithMany()
+                        .WithMany("Slots")
                         .HasForeignKey("VendingMachineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -204,6 +204,11 @@ namespace LibTech.Infrastructure.Migrations
 
                     b.Navigation("MoneyInside")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("LibTech.Domain.VendingMachine", b =>
+                {
+                    b.Navigation("Slots");
                 });
 #pragma warning restore 612, 618
         }

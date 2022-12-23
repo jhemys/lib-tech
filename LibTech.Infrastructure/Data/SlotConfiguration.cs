@@ -19,8 +19,7 @@ namespace LibTech.Infrastructure.Data
 
             builder
                 .HasOne(p => p.VendingMachine)
-                .WithMany()
-                .HasForeignKey("VendingMachineId");
+                .WithMany(p => p.Slots);
 
             builder
                 .OwnsOne(p => p.BookPile, a =>

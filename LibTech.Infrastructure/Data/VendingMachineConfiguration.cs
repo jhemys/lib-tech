@@ -41,7 +41,9 @@ namespace LibTech.Infrastructure.Data
                 .Property(p => p.TwentyDollarCount)
                 .HasColumnName("TwentyDollarCount");
 
-            builder.HasMany<Slot>().WithOne(p => p.VendingMachine);
+            builder.HasMany(p => p.Slots).WithOne(p => p.VendingMachine).HasForeignKey("VendingMachineId");
+
+            builder.Navigation(p => p.Slots).AutoInclude();
 
             builder.Ignore(p => p.MoneyInTransaction);
         }
