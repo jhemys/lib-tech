@@ -6,12 +6,10 @@ namespace LibTech.Tests
 {
     public class VendingMachineSpecs
     {
-        IVendingMachineRepository _mockedRepository = A.Fake<IVendingMachineRepository>();
-
         [Fact]
         public async Task BuyBook_trades_inserted_money_for_a_book()
         {
-            var vendingMachine = new VendingMachine(_mockedRepository);
+            var vendingMachine = new VendingMachine();
             vendingMachine.LoadBooks(1, new BookPile(new Book("title"), 10, 1m));
             await vendingMachine.InsertMoney(Money.OneDollar);
 
@@ -25,7 +23,7 @@ namespace LibTech.Tests
         [Fact]
         public void Cannot_make_purchase_when_there_is_no_books()
         {
-            var vendingMachine = new VendingMachine(_mockedRepository);
+            var vendingMachine = new VendingMachine();
 
             Action action = () => vendingMachine.BuyBook(1);
 
@@ -35,7 +33,7 @@ namespace LibTech.Tests
         [Fact]
         public void Vending_machine_returns_money_with_highest_denomination_first()
         {
-            var vendingMachine = new VendingMachine(_mockedRepository);
+            var vendingMachine = new VendingMachine();
 
             vendingMachine.LoadMoney(Money.OneDollar);
 
@@ -53,7 +51,7 @@ namespace LibTech.Tests
         [Fact]
         public async Task After_purchase_change_is_returned()
         {
-            var vendingMachine = new VendingMachine(_mockedRepository);
+            var vendingMachine = new VendingMachine();
             vendingMachine.LoadBooks(1, new BookPile(new Book("title"), 10, 0.5m));
             vendingMachine.LoadMoney(Money.TenCent * 10);
 
@@ -67,7 +65,7 @@ namespace LibTech.Tests
         [Fact]
         public async Task Cannot_buy_book_if_not_enough_change()
         {
-            var vendingMachine = new VendingMachine(_mockedRepository);
+            var vendingMachine = new VendingMachine();
             vendingMachine.LoadBooks(1, new BookPile(new Book("title"), 10, 0.5m));
             vendingMachine.LoadMoney(Money.OneDollar);
 

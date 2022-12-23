@@ -4,15 +4,11 @@ namespace LibTech.Domain
 {
     public class VendingMachine : AggregateRoot
     {
-        private readonly IVendingMachineRepository _repository;
-        public VendingMachine(IVendingMachineRepository repository) : this()
+        public VendingMachine()
         {
-            _repository = repository;
             MoneyInside = Money.None;
             MoneyInTransaction = 0m;
         }
-
-        private VendingMachine() { }
 
         public Money MoneyInside { get; set; }
         public decimal MoneyInTransaction { get; set; }
@@ -25,8 +21,7 @@ namespace LibTech.Domain
                 throw new InvalidOperationException("Invalid currency inserted.");
 
             MoneyInTransaction += money.Amount;
-
-            //await _repository.Save(this);
+            MoneyInside += money;
         }
 
         public void ReturnMoney()
@@ -64,8 +59,6 @@ namespace LibTech.Domain
 
             MoneyInside -= change;
             MoneyInTransaction = 0m;
-
-            await _repository.Save(this);
         }
 
         public void LoadBooks(int position, BookPile bookPile)

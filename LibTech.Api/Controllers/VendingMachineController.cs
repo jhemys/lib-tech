@@ -16,7 +16,7 @@ namespace LibTech.Api.Controllers
 
         public VendingMachineController(IVendingMachineRepository repository)
         {
-            _vendingMachine = new VendingMachine(repository);
+            _vendingMachine = new VendingMachine();
             _repository = repository;
         }
 
@@ -54,6 +54,7 @@ namespace LibTech.Api.Controllers
             var vendingMachine = await _repository.GetById(1);
             await vendingMachine.InsertMoney(new Money(0, 0, 0, value, 0, 0));
             await vendingMachine.BuyBook(position);
+            await _repository.Save(vendingMachine);
         }
 
         // PUT api/<SnackMachineController>/5
