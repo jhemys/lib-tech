@@ -6,17 +6,25 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LibTech.Infrastructure.Repositories
 {
-    public class WriteRepository<T> : IRepository<T> where T : Entity
+    public class Repository<T> : IRepository<T> where T : AggregateRoot
     {
         private readonly LibTechContext _context;
         private readonly DbSet<T> _entity;
-        public WriteRepository(LibTechContext context)
+        public Repository(LibTechContext context)
         {
             _context = context;
             _entity = _context.Set<T>();
         }
 
         public IUnitOfWork UnitOfWork => _context;
+
+        public async Task<T> GetById(int id)
+        {
+            return await _entity.FirstOrDefaultAsync(x => x.Id == id);
+        }
+
+        public async Task<IReadOnlyList<T>> GetAll() => await _entity.ToListAsync();
+
 
         public async Task AddAsync(T model)
         {
@@ -34,6 +42,21 @@ namespace LibTech.Infrastructure.Repositories
         {
             _entity.Attach(model);
             _entity.Entry(model).State = EntityState.Modified;
+        }
+
+        public async Task Save(T model)
+        {
+            if(model.Id <= 0)
+            {
+                await _entity.AddAsync(model);
+            }
+            else
+            {
+                _entity.Attach(model);
+                _entity.Entry(model).State = EntityState.Modified;
+            }
+
+            await _context.SaveEntitiesAsync();
         }
     }
 }

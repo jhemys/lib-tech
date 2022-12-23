@@ -8,7 +8,9 @@ namespace LibTech.Domain
         public VendingMachine VendingMachine { get; set; }
         public int Position { get; set; }
 
-        public Slot(VendingMachine vendingMachine, int position)
+        private Slot() { }
+
+        public Slot(VendingMachine vendingMachine, int position) : this()
         {
             VendingMachine = vendingMachine;
             Position = position;

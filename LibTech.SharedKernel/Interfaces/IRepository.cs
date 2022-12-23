@@ -2,12 +2,14 @@
 
 namespace LibTech.SharedKernel.Interfaces
 {
-    public interface IRepository<TModel> where TModel : IEntity
+    public interface IRepository<TModel> where TModel : IAggregateRoot
     {
         IUnitOfWork UnitOfWork { get; }
 
+        Task<TModel> GetById(int id);
         Task AddAsync(TModel model);
         void Remove(TModel model);
         void Update(TModel model);
+        Task Save(TModel model);
     }
 }
