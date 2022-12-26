@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Tracing;
+﻿using LibTech.SharedKernel;
+using System.Diagnostics.Tracing;
 
 namespace LibTech.Domain
 {

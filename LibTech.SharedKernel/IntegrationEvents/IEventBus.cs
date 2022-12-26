@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibTech.Applicatrion.IntegrationEvents
+namespace LibTech.SharedKernel.IntegrationEvents
 {
     public interface IEventBus
     {

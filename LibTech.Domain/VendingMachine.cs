@@ -14,7 +14,7 @@ namespace LibTech.Domain
         public decimal MoneyInTransaction { get; set; }
         public virtual IReadOnlyCollection<Slot> Slots { get; set; }
 
-        public async Task InsertMoney(Money money)
+        public void InsertMoney(Money money)
         {
             Money[] coins = new Money[] { Money.Cent, Money.TenCent, Money.QuarterCent, Money.OneDollar, Money.FiveDollar, Money.TwentyDollar };
             if (!coins.Contains(money))
@@ -47,7 +47,7 @@ namespace LibTech.Domain
             MoneyInTransaction = 0m;
         }
 
-        public async Task BuyBook(int position)
+        public void BuyBook(int position)
         {
             var slot = GetSlot(position);
 

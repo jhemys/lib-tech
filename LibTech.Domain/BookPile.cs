@@ -1,4 +1,6 @@
-﻿namespace LibTech.Domain
+﻿using LibTech.SharedKernel;
+
+namespace LibTech.Domain
 {
     public sealed class BookPile : ValueObject<BookPile>
     {

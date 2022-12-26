@@ -22,9 +22,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		default.conf = default.conf
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibTech.Applicatrion", "LibTech.Applicatrion\LibTech.Applicatrion.csproj", "{775679FC-4775-44AC-9CAF-C14ABF07EAC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibTech.Applicatrion", "LibTech.Applicatrion\LibTech.Applicatrion.csproj", "{775679FC-4775-44AC-9CAF-C14ABF07EAC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibTech.Gateway", "LibTech.Gateway\LibTech.Gateway.csproj", "{0B5F7259-929C-4FC0-ABFB-60D176F19D55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LibTech.Gateway", "LibTech.Gateway\LibTech.Gateway.csproj", "{0B5F7259-929C-4FC0-ABFB-60D176F19D55}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Vending", "Vending", "{31CB2C17-614B-45AD-AE13-83E4BD2EA2D2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

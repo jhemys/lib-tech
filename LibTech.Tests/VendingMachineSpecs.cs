@@ -7,11 +7,11 @@ namespace LibTech.Tests
     public class VendingMachineSpecs
     {
         [Fact]
-        public async Task BuyBook_trades_inserted_money_for_a_book()
+        public void BuyBook_trades_inserted_money_for_a_book()
         {
             var vendingMachine = new VendingMachine();
             vendingMachine.LoadBooks(1, new BookPile(new Book("title"), 10, 1m));
-            await vendingMachine.InsertMoney(Money.OneDollar);
+            vendingMachine.InsertMoney(Money.OneDollar);
 
             vendingMachine.BuyBook(1);
 
@@ -37,10 +37,10 @@ namespace LibTech.Tests
 
             vendingMachine.LoadMoney(Money.OneDollar);
 
-            _ = vendingMachine.InsertMoney(Money.QuarterCent);
-            _ = vendingMachine.InsertMoney(Money.QuarterCent);
-            _ = vendingMachine.InsertMoney(Money.QuarterCent);
-            _ = vendingMachine.InsertMoney(Money.QuarterCent);
+            vendingMachine.InsertMoney(Money.QuarterCent);
+            vendingMachine.InsertMoney(Money.QuarterCent);
+            vendingMachine.InsertMoney(Money.QuarterCent);
+            vendingMachine.InsertMoney(Money.QuarterCent);
 
             vendingMachine.ReturnMoney();
 
@@ -49,13 +49,13 @@ namespace LibTech.Tests
         }
 
         [Fact]
-        public async Task After_purchase_change_is_returned()
+        public void After_purchase_change_is_returned()
         {
             var vendingMachine = new VendingMachine();
             vendingMachine.LoadBooks(1, new BookPile(new Book("title"), 10, 0.5m));
             vendingMachine.LoadMoney(Money.TenCent * 10);
 
-            await vendingMachine.InsertMoney(Money.OneDollar);
+            vendingMachine.InsertMoney(Money.OneDollar);
             vendingMachine.BuyBook(1);
 
             vendingMachine.MoneyInside.Amount.Should().Be(1.5m);
@@ -63,13 +63,13 @@ namespace LibTech.Tests
         }
 
         [Fact]
-        public async Task Cannot_buy_book_if_not_enough_change()
+        public void Cannot_buy_book_if_not_enough_change()
         {
             var vendingMachine = new VendingMachine();
             vendingMachine.LoadBooks(1, new BookPile(new Book("title"), 10, 0.5m));
             vendingMachine.LoadMoney(Money.OneDollar);
 
-            await vendingMachine.InsertMoney(Money.OneDollar);
+            vendingMachine.InsertMoney(Money.OneDollar);
             Action action = () => vendingMachine.BuyBook(1);
 
             action.Should().Throw<InvalidOperationException>().Which.Message.Should().Be("No change available for this purchase value inserted.");

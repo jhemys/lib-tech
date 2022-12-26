@@ -1,4 +1,5 @@
 ﻿using LibTech.Domain;
+using LibTech.Domain.Interfaces;
 using LibTech.Infrastructure.Repositories;
 using LibTech.SharedKernel.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -44,7 +45,7 @@ namespace LibTech.Api.Controllers
         [HttpPost]
         public async Task AddMoney()
         {
-            await _vendingMachine.InsertMoney(Money.Cent);
+            _vendingMachine.InsertMoney(Money.Cent);
         }
 
         [Route("[action]/{position}/{value}")]
@@ -52,8 +53,8 @@ namespace LibTech.Api.Controllers
         public async Task BuySnack(int position, int value)
         {
             var vendingMachine = await _repository.GetById(1);
-            await vendingMachine.InsertMoney(new Money(0, 0, 0, value, 0, 0));
-            await vendingMachine.BuyBook(position);
+            vendingMachine.InsertMoney(new Money(0, 0, 0, value, 0, 0));
+            vendingMachine.BuyBook(position);
             await _repository.Save(vendingMachine);
         }
 

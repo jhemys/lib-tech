@@ -1,4 +1,4 @@
-﻿using LibTech.Applicatrion.IntegrationEvents;
+﻿using LibTech.SharedKernel.IntegrationEvents;
 using RabbitMQ.Client;
 
 namespace LibTech.Infrastructure.EventBus

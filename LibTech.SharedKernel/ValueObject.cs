@@ -1,4 +1,4 @@
-﻿namespace LibTech.Domain
+﻿namespace LibTech.SharedKernel
 {
     public abstract class ValueObject<T> where T : ValueObject<T>
     {

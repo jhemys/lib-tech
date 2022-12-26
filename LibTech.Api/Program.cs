@@ -1,4 +1,4 @@
-using LibTech.Domain;
+using LibTech.Domain.Interfaces;
 using LibTech.Infrastructure.Repositories;
 using LibTech.Infrastructure.Services;
 
